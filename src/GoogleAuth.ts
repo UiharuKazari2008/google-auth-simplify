@@ -23,12 +23,8 @@ export class GoogleAuth implements IAuth {
     this.authOptions = authOptions;
   }
   public generateAuthUrl(scope: Array<string>): string {
-    const defaultScopes = [
-      'https://www.googleapis.com/auth/userinfo.email',
-      'https://www.googleapis.com/auth/userinfo.profile',
-    ];
     const generateAuthUrlOpts: GenerateAuthUrlOpts = {
-      scope: (scope) ? scope : [...defaultScopes],
+      scope,
       access_type: 'offline',
     };
 
