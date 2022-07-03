@@ -22,13 +22,13 @@ export class GoogleAuth implements IAuth {
     });
     this.authOptions = authOptions;
   }
-  public generateAuthUrl(): string {
+  public generateAuthUrl(scope: Array<string>): string {
     const defaultScopes = [
       'https://www.googleapis.com/auth/userinfo.email',
       'https://www.googleapis.com/auth/userinfo.profile',
     ];
     const generateAuthUrlOpts: GenerateAuthUrlOpts = {
-      scope: [...defaultScopes],
+      scope: [...((scope) ? scope : defaultScopes)],
       access_type: 'offline',
     };
 
